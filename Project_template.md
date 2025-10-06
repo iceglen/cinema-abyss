@@ -1,11 +1,6 @@
-## Изучите [README.md](README.md) файл и структуру проекта.
-
 ## Задание 1
 
-1. Спроектируйте to be архитектуру КиноБездны, разделив всю систему на отдельные домены и организовав интеграционное взаимодействие и единую точку вызова сервисов.
-Результат представьте в виде контейнерной диаграммы в нотации С4.
-Добавьте ссылку на файл в этот шаблон
-[ссылка на файл](ссылка)
+[C4 containsers scheme](https://www.plantuml.com/plantuml/png/bLR1RkCs4BtxAwQv904CzB1xB8frx6sxG09uOnHxD2XnB1ELI9Uad0X5_xsaDB99qxJIcqtDl3SSyl7D5sEPjcrJmr98RDYYw8o1JMSiDh1KqZAth64bMALPC_j9oB9kES8loyy_BpzlJn6_pcPhr4R9XzQWdiCTGVpf_jsvlozCiWeDcBOmfHO7AvGqStXZjjmBMK7fW53QEQ0jxnvdio5z-wHQoPdk7eBg75fQwzqZ_3C3W7FDVI5RTX3RYbbyOvtByzN0OlqDVX-M75ESKuYwTkLSf3qDgpSp6JSNMGj-H6s5mGQbDHV96Lw3-YXA33WtmqhOGx-nk97090V2I2eB8mE2JR1yZOLE15XPeZ72eGkRRhiMXMQw2t2VXvLSuVTdPCg5X_iVhlJXBa3Dh0kQm_qF_nUv__aREoejB9hx_duy9bLmPlQ5Ofe7TQp6jMmBJrbz-yQgD9QgQL1orhSsuVAf8mrTgIo3wvrgfHtEXxLsxmX4sGCdk0rQvZXPWFr2IpUFH_AnhoD20XrlQMi6RRdOW-sr-Xfz7zM_6BvxqhLMxvs_ZHh_Rj5O0rO1lhklajKGmoViL6cmhoNLJjiYXgFWmRwiwhTrJMS1qeAR6nVDnLxD5uwYqjIC2ElR-SjjN0WmOATL0rpiTgXzwOTXBzeaEbyLiHfvuRUkZAqqRhu_UwgDLVhC54OxoftI3JKv0IRvJsDIu0GSYNCQZW8du7pm9DPjZ40XBebLlKAKhDJgAK0wCYrK6udXtvETV7st3-PJaB_v19lXJm11Lz1b1caD6kF2jkx-jpxpbHM5i2_VVTuVJFBQ9JBJoHAy65f9CeS2xHkYl10931hqwWsDDwAyBjkSNE_23sSP5SmW1oM7z-YWiR-Z9PgUUYzyAxgOThn8upKEp6XDIrSqGLcUU2Ve36DSnas8-NLyFjnw14o_0SE0XuRflz2QETIgOxNjlChyI69EbZ1xnPgcZolMlnXiJ5PZw-rUgxRQnxuyO2JP5s_-uloIKmEocHdp_QYLPr0Jrvsms2pGDUDyfJUUi3viapr50fYq8A7PAM-KLXnn-jNBSOngp-0dRdbAo4DEcsQAdtObXvwUO8YNFyOC70LERPyBSwYPT_8y5ECc0nFRgi_Fp9PqVQSFEsz7UV3KG3zicHvr-vmEsxIGVJ7eU_R98D0K8tbAuqvSVJJxE-eIY7mWoDQST23RqHuckNQ1pMUDFOMPqCQbLsvwIugJnb4Ih1hZeOyVEIv0ScQuFdKAl9x_hzyIL_9y9BD6Vi0WZDWZ-dzfKwyrCz5kDA7Gh1nDtcvgeO0H8n9jPiJDgnc2QBhGgyoWJF0vfNYmq_YRruk3Jr32yU33fSw-eEHjK_y7)
 
 
 ## Задание 2
@@ -33,7 +28,7 @@
       MONOLITH_URL: http://monolith:8080
       #монолит
       MOVIES_SERVICE_URL: http://movies-service:8081 #сервис movies
-      EVENTS_SERVICE_URL: http://events-service:8082 
+      EVENTS_SERVICE_URL: http://events-service:8082
       GRADUAL_MIGRATION: "true" # вкл/выкл простого фиче-флага
       MOVIES_MIGRATION_PERCENT: "50" # процент миграции
     networks:

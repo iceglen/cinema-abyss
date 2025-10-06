@@ -1,0 +1,71 @@
+@startuml CinemaAbyss System Container Diagram
+!include <C4/C4_Container>
+
+Person(user, "System User", "Manages subscriptions, watching content, etc")
+
+System_Boundary(CinemaAbyss, "CinemaAbyss System") {
+    Container(user_api_gateway, "User API Gateway")
+    Container(billing_api_gateway, "Billing API Gateway")
+    Container(ads_api_gateway, "Advertisements API Gateway")
+
+    Container(billing_service, "Billing Service", "Manages user subscriptions and billing")
+    Container(subscription_service, "Subscription Service", "Manages content accessibility")
+    Container(library_service, "Library Service", "Manages user's content library ('Will watch later', 'Watched', 'Favorites', etc)")
+    Container(dashboard_service, "Dashboard Service", "Manages user dashboard and content recommendations")
+    Container(user_service, "User Service", "Manages user accounts and authentication")
+    Container(metadata_service, "Metadata Service", "Manages content and user's metadata")
+    Container(recommendation_system_adapter, "Recommendation System Adapter", "Proxying requests to external recommendation")
+    Container(content_service, "Content Service", "Provides content to user")
+    Container(ads_service, "Ads Service", "Manages user's ads")
+    Container(ads_integration_service, "Ads Integration Service", "Manages user's ads integration from different providers")
+
+    ContainerDb(subscription_db, "PostgreSQL", "Stores user's subscription information")
+    ContainerDb(billing_db, "PostgreSQL", "Stores user's billing information")
+    ContainerDb(library_db, "PostgreSQL", "Stores user's library information")
+    ContainerDb(user_db, "PostgreSQL", "Stores user's information")
+    ContainerDb(metadata_storage, "MongoDB", "Stores various metadata")
+}
+
+System_Ext(s3_storage, "S3 Storage", "Stores content")
+System_Ext(message_queue, "RabbitMQ", "Handles async communication between recommendation system and CinemaAbyss")
+System_Ext(recommendation_system, "Recommendation System", "Recommends content based on user preferences and history")
+System_Ext(billing_provider, "Billing Provider", "Manages user's billing confirmation")
+System_Ext(ads_provider, "External ads Provider", "Provide external ads (markets, loyalty programs, etc)")
+
+Rel(user, user_api_gateway, "Accessing system through API Gateway")
+Rel(user_api_gateway, user_service, "Authenticates user")
+Rel(user_api_gateway, subscription_service, "Manages user subscriptions and billing")
+Rel(user_api_gateway, library_service, "Manages user's content library")
+Rel(user_api_gateway, dashboard_service, "Requests user's dashboard and content recommendations")
+
+Rel(dashboard_service, subscription_service, "Requests for active user's subscription information")
+Rel(dashboard_service, metadata_service, "Requests for content and user metadata")
+Rel(dashboard_service, recommendation_system_adapter, "Requests for content recommendations")
+Rel(dashboard_service, library_service, "Requests for user's content library")
+Rel(dashboard_service, content_service, "Requests for content displaying")
+Rel(dashboard_service, ads_service, "Requests for user's ads")
+
+Rel(subscription_service, billing_service, "Requests for active user's billing information")
+Rel(subscription_service, subscription_db, "Stores user's subscription information")
+
+Rel_L(billing_service, billing_api_gateway, "Accessing billing through API Gateway")
+Rel_L(billing_api_gateway, billing_provider, "Requests for billing confirmation and processing")
+Rel(billing_service, billing_db, "Stores user's billing information")
+
+Rel(library_service, library_db, "Stores user's library information")
+
+Rel(recommendation_system_adapter, message_queue, "Sends recommendation request to message queue")
+
+Rel(message_queue, recommendation_system, "Processing data between recommendation system and CinemaAbyss")
+
+Rel(metadata_service, metadata_storage, "Stores various metadata")
+
+Rel(user_service, user_db, "Stores user's information")
+
+Rel(content_service, s3_storage, "Content requests to S3 storage")
+
+Rel(ads_service, ads_integration_service, "Requests for user's ads integration")
+Rel_D(ads_integration_service, ads_api_gateway, "Accessing ads providers through API Gateway")
+Rel_D(ads_api_gateway, ads_provider, "Requests for user's ads integration")
+
+@enduml

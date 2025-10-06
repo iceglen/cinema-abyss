@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: proxy-service
+
+services:
+  migrated: "${GRADUAL_MIGRATION:false}"
+  routing-percent: "${MOVIES_MIGRATION_PERCENT:50}"
+  monolith:
+    url: "${MONOLITH_URL:http://localhost:8081}"
+  events:
+    url: "${EVENTS_SERVICE_URL:http://localhost:8082}"
+  movies:
+    url: "${MOVIES_SERVICE_URL:http://localhost:8083}"

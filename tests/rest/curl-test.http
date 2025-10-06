@@ -1,0 +1,21 @@
+GET http://localhost:8000/health
+
+###
+
+GET http://localhost:8080/api/movies
+Content-Type: application/json
+
+###
+
+POST http://localhost:8082/api/events/movie
+Content-Type: application/json
+
+{
+  "movieId": 123,
+  "title": "The Matrix",
+  "action": "watch",
+  "userId": 456,
+  "rating": 8.7,
+  "genres": ["Sci-Fi", "Action"],
+  "description": "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers."
+}
