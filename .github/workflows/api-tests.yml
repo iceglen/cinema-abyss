@@ -23,7 +23,8 @@ on:
 jobs:
   api-tests:
     name: Run API Tests
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: self-hosted
     
     steps:
       - name: Checkout code
