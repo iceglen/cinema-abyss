@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: events-service
+  kafka:
+    consumer:
+      group-id: ru-artem-papyan-events
+    bootstrap-servers: "${KAFKA_BROKERS:localhost:9092}"
+    security:
+      protocol: PLAINTEXT
+server:
+  port: 8099
