@@ -22,14 +22,23 @@ services:
       - cinemaabyss-network
 
   # ZooKeeper for Kafka
+  # zookeeper:
+  #   image: wurstmeister/zookeeper:latest
+  #   container_name: cinemaabyss-zookeeper
+  #   ports:
+  #     - "2181:2181"
+  #   networks:
+  #     - cinemaabyss-network
+  #   restart: always
   zookeeper:
-    image: wurstmeister/zookeeper:latest
-    container_name: cinemaabyss-zookeeper
-    ports:
-      - "2181:2181"
-    networks:
-      - cinemaabyss-network
+    image: zookeeper:latest
     restart: always
+    hostname: zookeeper
+    ports:
+      - 2181:2181
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_SERVERS: server.1=zookeeper:2888:3888;2181
 
   # Kafka
   kafka:
