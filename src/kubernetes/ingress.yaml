@@ -8,12 +8,21 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   rules:
-    - http:
+    - host: cinemaabyss.example.com
+      http:
         paths:
-          - path: /api/
+          - path: /
             pathType: Prefix
             backend:
               service:
                 name: proxy-service
                 port:
                   number: 8000
+
+          - path: /api/events
+            pathType: Prefix
+            backend:
+              service:
+                name: events-service
+                port:
+                  number: 8082
