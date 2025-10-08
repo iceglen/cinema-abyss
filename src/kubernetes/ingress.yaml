@@ -8,8 +8,7 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   rules:
-    - host: cinemaabyss.example.com
-      http:
+    - http:
         paths:
           - path: /api/
             pathType: Prefix
