@@ -133,7 +133,7 @@ jobs:
         }
 }
 ```
-то выполните 
+то выполните
 
 и добавьте
 
@@ -162,7 +162,7 @@ cat .docker/config.json | base64
 
   Доработайте src/kubernetes/event-service.yaml и src/kubernetes/proxy-service.yaml
 
-  - Необходимо создать Deployment и Service 
+  - Необходимо создать Deployment и Service
   - Доработайте ingress.yaml, чтобы можно было с помощью тестов проверить создание событий
   - Выполните дальшейшие шаги для поднятия кластера:
 

@@ -11,9 +11,7 @@ spec:
     - host: cinemaabyss.example.com
       http:
         paths:
-          #дополните конфигурацию для /
-          ...
-          - path: /api/events
+          - path: /api/events/
             pathType: Prefix
             backend:
               service:
