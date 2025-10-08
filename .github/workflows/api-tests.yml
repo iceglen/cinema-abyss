@@ -56,15 +56,16 @@ jobs:
         working-directory: tests/postman
         run: |
 
-          docker compose up -d
+          # docker compose up -d
           # Wait for services to be ready
           echo "Waiting for services to be ready..."
           sleep 15
           # Build the Docker image
-          docker build -t cinemaabyss-api-tests .
+          # docker build -t cinemaabyss-api-tests .
+          npm run test:local
 
           # Run the tests in Docker
-          docker run --network=cinemaabyss-network -v "$(pwd)/reports:/app/reports" cinemaabyss-api-tests
+          # docker run --network=cinemaabyss-network -v "$(pwd)/reports:/app/reports" cinemaabyss-api-tests
 
       - name: Stop services
         if: always()
