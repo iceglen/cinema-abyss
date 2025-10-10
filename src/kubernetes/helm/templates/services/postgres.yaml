@@ -4,9 +4,8 @@ metadata:
   name: postgres
   namespace: {{ .Values.global.namespace }}
   labels:
+    {{- include "cinemaabyss.labels" . | nindent 4 }}
     app: postgres
-    app.kubernetes.io/name: {{ include "cinemaabyss.name" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
 spec:
   serviceName: postgres
   replicas: 1
@@ -81,9 +80,8 @@ metadata:
   name: postgres
   namespace: {{ .Values.global.namespace }}
   labels:
+    {{- include "cinemaabyss.labels" . | nindent 4 }}
     app: postgres
-    app.kubernetes.io/name: {{ include "cinemaabyss.name" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
 spec:
   selector:
     app: postgres
