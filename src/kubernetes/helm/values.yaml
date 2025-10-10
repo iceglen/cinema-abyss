@@ -33,7 +33,7 @@ database:
 monolith:
   enabled: true
   image:
-    repository: ghcr.io/db-exp/cinemaabysstest/monolith
+    repository: ghcr.io/iceglen/cinema-abyss/monolith
     tag: latest
     pullPolicy: Always
   replicas: 1
@@ -53,7 +53,7 @@ monolith:
 proxyService:
   enabled: true
   image:
-    repository: ghcr.io/db-exp/cinemaabysstest/proxy-service
+    repository: ghcr.io/iceglen/cinema-abyss/proxy-service
     tag: latest
     pullPolicy: Always
   replicas: 1
@@ -65,15 +65,15 @@ proxyService:
       cpu: 100m
       memory: 128Mi
   service:
-    port: 80
-    targetPort: 8000
+    port: 8000
+    targetPort: 8080
     type: ClusterIP
 
 # Movies service configuration
 moviesService:
   enabled: true
   image:
-    repository: ghcr.io/db-exp/cinemaabysstest/movies-service
+    repository: ghcr.io/iceglen/cinema-abyss/movies-service
     tag: latest
     pullPolicy: Always
   replicas: 1
@@ -93,7 +93,7 @@ moviesService:
 eventsService:
   enabled: true
   image:
-    repository: ghcr.io/db-exp/cinemaabysstest/events-service
+    repository: ghcr.io/iceglen/cinema-abyss/events-service
     tag: latest
     pullPolicy: Always
   replicas: 1
@@ -106,7 +106,7 @@ eventsService:
       memory: 128Mi
   service:
     port: 8082
-    targetPort: 8082
+    targetPort: 8080
     type: ClusterIP
 
 # Kafka configuration
