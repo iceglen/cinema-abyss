@@ -5,9 +5,8 @@ metadata:
   name: movies-service
   namespace: {{ .Values.global.namespace }}
   labels:
+    {{- include "cinemaabyss.labels" . | nindent 4 }}
     app: movies-service
-    app.kubernetes.io/name: {{ include "cinemaabyss.name" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
 spec:
   replicas: {{ .Values.moviesService.replicas }}
   selector:
@@ -63,9 +62,8 @@ metadata:
   name: movies-service
   namespace: {{ .Values.global.namespace }}
   labels:
+    {{- include "cinemaabyss.labels" . | nindent 4 }}
     app: movies-service
-    app.kubernetes.io/name: {{ include "cinemaabyss.name" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
 spec:
   selector:
     app: movies-service

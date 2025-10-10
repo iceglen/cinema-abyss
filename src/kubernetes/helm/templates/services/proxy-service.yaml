@@ -5,9 +5,8 @@ metadata:
   name: proxy-service
   namespace: {{ .Values.global.namespace }}
   labels:
+    {{- include "cinemaabyss.labels" . | nindent 4 }}
     app: proxy-service
-    app.kubernetes.io/name: {{ include "cinemaabyss.name" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
 spec:
   replicas: {{ .Values.proxyService.replicas }}
   selector:
@@ -77,9 +76,8 @@ metadata:
   name: proxy-service
   namespace: {{ .Values.global.namespace }}
   labels:
+    {{- include "cinemaabyss.labels" . | nindent 4 }}
     app: proxy-service
-    app.kubernetes.io/name: {{ include "cinemaabyss.name" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
 spec:
   selector:
     app: proxy-service
